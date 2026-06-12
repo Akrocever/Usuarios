@@ -227,6 +227,7 @@
       padding: 16px;
       border-radius: 8px;
       border-left: 5px solid #003f5c;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .step-number {
@@ -242,6 +243,7 @@
       justify-content: center;
       margin-right: 16px;
       font-size: 14px;
+      transition: background 0.3s ease;
     }
 
     .step-content {
@@ -252,7 +254,47 @@
 
     .step-content strong {
       color: #003f5c;
+      transition: color 0.3s ease;
     }
+
+    /* ── COLORES PERSONALIZABLES PARA LOS PASOS ── */
+    
+    /* Variante Verde (Completado) */
+    .step-item.paso-verde {
+      background: #e2f5e9;
+      border-left-color: #10b981;
+    }
+    .step-item.paso-verde .step-number {
+      background: #10b981;
+    }
+    .step-item.paso-verde .step-content strong {
+      color: #047857;
+    }
+
+    /* Variante Azul (En proceso / Opcional) */
+    .step-item.paso-azul {
+      background: #e0f2fe;
+      border-left-color: #0ea5e9;
+    }
+    .step-item.paso-azul .step-number {
+      background: #0ea5e9;
+    }
+    .step-item.paso-azul .step-content strong {
+      color: #0369a1;
+    }
+
+    /* Variante Naranja (Atención / Opcional) */
+    .step-item.paso-naranja {
+      background: #fff7ed;
+      border-left-color: #f97316;
+    }
+    .step-item.paso-naranja .step-number {
+      background: #f97316;
+    }
+    .step-item.paso-naranja .step-content strong {
+      color: #c2410c;
+    }
+
 
     /* Resultado final destacado */
     .result-box {
@@ -393,29 +435,29 @@
       
       <div class="steps-container">
         
-        <div class="step-item">
+        <div class="step-item" id="t1-p1">
           <div class="step-number">01</div>
           <div class="step-content">
             Ahorrar <strong>$50 pesos</strong> durante 4 semanas.
           </div>
         </div>
 
-        <div class="step-item">
+        <div class="step-item" id="t1-p2">
           <div class="step-number">02</div>
           <div class="step-content">
             Afiliarse al mejor negocio de streaming <strong>VEOTV</strong> con un monto mínimo de <strong>$200 pesos</strong>.
           </div>
         </div>
 
-        <div class="step-item">
+        <div class="step-item" id="t1-p3">
           <div class="step-number">03</div>
           <div class="step-content">
             Invitar a <strong>5 personas</strong> a hacer lo mismo. Hacer crecer sus ahorros con estos mismos pasos.
           </div>
         </div>
 
-        <div class="step-item">
-          <div class="step-number">05</div>
+        <div class="step-item" id="t1-p4">
+          <div class="step-number">04</div>
           <div class="step-content">
             Tus $200 pesos ahora son convertidos en <strong>$300 pesos y en una fuente de ingresos recurrentes</strong>.
           </div>
@@ -438,28 +480,28 @@
       
       <div class="steps-container">
         
-        <div class="step-item">
+        <div class="step-item paso-verde" id="t2-p1">
           <div class="step-number">01</div>
           <div class="step-content">
             Ahorrar <strong>$125 pesos</strong> durante 4 semanas.
           </div>
         </div>
 
-        <div class="step-item">
+        <div class="step-item paso-verde" id="t2-p2">
           <div class="step-number">02</div>
           <div class="step-content">
             Afiliarse al segundo negocio de <strong>tarjeta digital payrewards</strong> con un monto mínimo de <strong>$500 pesos</strong>.
           </div>
         </div>
 
-        <div class="step-item">
+        <div class="step-item" id="t2-p3">
           <div class="step-number">03</div>
           <div class="step-content">
             Invitar a <strong>4 personas</strong> a hacer lo mismo. Hacer crecer sus ahorros con estos mismos pasos.
           </div>
         </div>
 
-        <div class="step-item">
+        <div class="step-item" id="t2-p4">
           <div class="step-number">04</div>
           <div class="step-content">
             Tus $500 pesos ahora son convertidos en una <strong>fuente de ingresos recurrentes</strong> por el uso de la tarjeta.
@@ -538,7 +580,9 @@
     </div>
   </div>
 
-</div> <footer style="
+</div> 
+
+<footer style="
   background: #3f8fb8;
   color: white;
   text-align: center;
@@ -564,6 +608,24 @@
   "></div>
 </footer>
 
+<script>
+  // Esta función te permite cambiar el color de cualquier paso dinámicamente con JavaScript
+  function cambiarColorPaso(idDelPaso, claseColor) {
+    const paso = document.getElementById(idDelPaso);
+    if (paso) {
+      // Limpiamos clases de color anteriores por si acaso
+      paso.classList.remove('paso-verde', 'paso-azul', 'paso-naranja');
+      // Aplicamos la nueva clase de color si se define una
+      if(claseColor) {
+        paso.classList.add(claseColor);
+      }
+    }
+  }
+
+  // Ejemplo de uso desde JavaScript:
+  // cambiarColorPaso('t1-p1', 'paso-verde'); // Volvería verde el paso 1 de la tarjeta 1
+  // cambiarColorPaso('t1-p2', 'paso-azul');  // Volvería azul el paso 2 de la tarjeta 1
+</script>
+
 </body>
 </html>
-
